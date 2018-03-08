@@ -23,7 +23,12 @@ The default configuration assumes that you are using tcp/587 submission to send 
 
 # Setup
 
-## Configure JSON file
+1. Clone the repo to DOCUMENT_ROOT/autodiscover
+2. Configure the JSON file
+3. Setup DNS so clients can find it.
+4. Configure Apache
+
+## Configuring JSON file
 
 The `configs/config.json` file contains the information you need to setup your server. Configure access to the database server. It is looking for a postfix database, which should be the **same** one you are using for postfix admin.
 
@@ -33,11 +38,62 @@ JSON objects:
 * Servers > IMAP - Your IMAP server details
 * Servers > SMTP - Your SMTP server details 
 
-
 ## Configure DNS
 
+### Helping Thunderbird find your settings
 
-# References / Credits / Thanks
+Thunderbird needs the following records:
+
+* An `A` record for autoconfig
+
+````
+autoconfig              IN        A      123.456.789.1
+
+````
+
+...or... a CNAME
+
+`autoconfig               IN        CNAME   www`
+
+### Helping iOS, Applemail, and Outlook find your settings:
+
+These clients look for SRV records, so setup these SRV records to point it to your configs:
+
+```
+_imaps._tcp             SRV 0 1 993     yourmailserver.example.org.
+_submission._tcp        SRV 0 1 465     yourmailserver.example.org.
+_autodiscover._tcp      SRV 0 0 443     autodiscover.example.org.
+```
+
+
+
+## Configuring Apache
+
+We need to use `mod_rewrite` to redirect requests to the script. To do that, add the following lines to your virtual host definition:
+
+```
+        #Start autoconfigure stuff
+        RewriteEngine On
+
+        #Match Thunderbird
+        RewriteRule ^/mail/config-v1.1.xml /autodiscover/autoconfig.php
+
+        #Match iOS / Mobile
+        RewriteRule ^/email.mobileconfig /autodiscover/autoconfig.php
+
+        #Match Outlook / Macmail
+        RewriteRule ^/Autodiscover/Autodiscover.xml /autodiscover/autoconfig.php
+
+```
+
+# References
+
+* [Mozilla autoconfig documentation](https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Autoconfiguration)
+* [Implementing an Autodiscover Client in Microsoft Exchange](https://msdn.microsoft.com/en-us/library/office/ee332364(v=exchg.140).aspx#sectionSection0)
+
+# Credits / Thanks
 Thanks to the work of these fine folks whose repos provided guidance and insight into this process:
 
 * [Tiliq](https://github.com/Tiliq/autodiscover.xml)
+* [gronke](https://github.com/gronke/email-autodiscover)
+* [Thorarin](https://github.com/Thorarin/MailClientAutoConfig)
