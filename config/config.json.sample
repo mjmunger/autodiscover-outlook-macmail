@@ -15,5 +15,6 @@
       "hostname": "host01.highpoweredhelp.com",
       "port" : 587
     }
-  }
+  },
+  "logging" : true
 }

@@ -83,7 +83,6 @@ class ClientHandlerBase
     }
 
     public function getHeaders() {
-        $this->headers[] = [];
         $this->headers[] = "Cache-Control: no-cache, must-revalidate";
         $this->headers[] = "Pragma: no-cache";
         $this->headers[] = "Expires: Sat, 26 Jul 1997 05:00:00 GMT";
