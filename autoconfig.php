@@ -9,7 +9,7 @@
 
 $configPath = 'config/config.json';
 
-include("bootstrap.php");
+include(__DIR__ . "/bootstrap.php");
 
 if(file_exists($configPath) == false ) die("Config does not exist! RTFM. See: https://github.com/mjmunger/autodiscover-outlook-macmail");
 
