@@ -1,5 +1,13 @@
 # autodiscover-outlook-macmail
 This PHP repo is a configurable set of scripts to autoconfigure Outlook, MacMail, Android, iPhone, and Thunderbird for your IMAP and SMTP servers.
+# Quickstart (TL;DR - Just get me setup!)
+
+1. Clone the repo to DOCUMENT_ROOT/autodiscover
+1. Run `composer update` to get dependencies.
+1. Configure the JSON file (config/config.json)
+1. Setup DNS so clients can find it (see below)
+1. Configure Apache mod_rewrite for virtual hosts (See copy / paste stuff below)
+1. Configure your SSL certificate SAN to include autoconfig and autodiscover. (Notes on using LetsEncrypt for this, below)
 
 # What's this?
 
@@ -85,10 +93,18 @@ We need to use `mod_rewrite` to redirect requests to the script. To do that, add
         RewriteRule ^/Autodiscover/Autodiscover.xml /autodiscover/autoconfig.php
 
 ```
+## Configuring LetsEncrypt
 
+1. Add `ServerAlias` directives to your existing HTTP and HTTPS configuration files.
+1. Use `certbot-auto` to initiate a renewal. 
+1. Select the domains from the menu (entering numbers of each one)
+1. When prompted, choose *expand* for expanding the names on your cert.
+1. When prompted, require https redirection.
+ 
 # References
 
 * [Mozilla autoconfig documentation](https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Autoconfiguration)
+* [Mozilla Mission Control aka AutoConfig](https://developer.mozilla.org/en-US/docs/Archive/Misc_top_level/MCD,_Mission_Control_Desktop_AKA_AutoConfig)
 * [Implementing an Autodiscover Client in Microsoft Exchange](https://msdn.microsoft.com/en-us/library/office/ee332364(v=exchg.140).aspx#sectionSection0)
 
 # Credits / Thanks

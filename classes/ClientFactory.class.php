@@ -22,6 +22,9 @@ class ClientFactory
             case '/mail/config-v1.1.xml':
                 return new ClientHandlerThunderbird();
                 break;
+            case '/.well-known/autoconfig/mail/config-v1.1.xml':
+                return new ClientHandlerThunderbird();
+                break;
             case '/email.mobileconfig':
                 return new ClientHandleriOS();
                 break;
