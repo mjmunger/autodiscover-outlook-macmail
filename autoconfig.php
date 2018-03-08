@@ -7,6 +7,8 @@
  * @author Michael Munger <michael@highpoweredhelp.com>
  */
 
+namespace Autodiscover;
+
 $configPath = 'config/config.json';
 
 include(__DIR__ . "/bootstrap.php");
