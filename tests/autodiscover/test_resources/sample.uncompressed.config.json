@@ -1,0 +1,20 @@
+{
+  "database": {
+    "username": "Iitnf",
+    "password": "AhWbWvF",
+    "server": "InvcDTmkbpAZGurN",
+    "port": "iHlJqdnobhmn",
+    "dbname": "wplDfp"
+  },
+  "servers": {
+    "imap": {
+      "hostname" : "VYRySCWitcYMlcqrcV",
+      "port" : 993
+    },
+    "smtp": {
+      "hostname": "WIxNntjvoDA",
+      "port" : 587
+    }
+  },
+  "logging" : true
+}
