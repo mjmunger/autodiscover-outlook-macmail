@@ -20,6 +20,7 @@ class ClientHandlerBase
     public    $config       = '';
     public    $log          = false;
     public    $response     = '';
+    public    $headers      = [];
     protected $template     = '';
 
     public function sanitizeJSON($jsonString) {
@@ -79,5 +80,14 @@ class ClientHandlerBase
     public function parseDomain() {
         $buffer = explode("@",$this->emailAddress);
         $this->domain = end($buffer);
+    }
+
+    public function getHeaders() {
+        $this->headers[] = [];
+        $this->headers[] = "Cache-Control: no-cache, must-revalidate";
+        $this->headers[] = "Pragma: no-cache";
+        $this->headers[] = "Expires: Sat, 26 Jul 1997 05:00:00 GMT";
+        $this->headers[] = "Content-type: application/xml";
+        return $this->headers;
     }
 }
