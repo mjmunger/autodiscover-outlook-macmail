@@ -27,8 +27,8 @@ function get_request_provider() {
 
     return  [
         // Request URI,                                          , Payload              , Expected Email address  , Expected Class                              , ConfigPath
-        [ ['REQUEST_URI' => '/Autodiscover/Autodiscover.xml']       , $xml              , 'foo@example.org'       , 'Autodiscover\ClientHandlerOutlookMacMail'  , $configPath , file_get_contents(__DIR__ . '/expected.autodiscover.xml')   ],
-        [ ['REQUEST_URI' => '/mail/config-v1.1.xml']                , "baz@example.org" , 'baz@example.org'       , 'Autodiscover\ClientHandlerThunderbird'     , $configPath , file_get_contents(__DIR__ . '/expected.autoconfig.xml') ],
-        [ ['REQUEST_URI' => 'email.mobileconfig?email=foo@bar.com'] , 'bar@example.org' , 'bar@example.org'       , 'Autodiscover\ClientHandleriOS'             , $configPath , file_get_contents(__DIR__ . '/expected.mobileconfig.xml') ],
+        [ ['REQUEST_URI' => '/Autodiscover/Autodiscover.xml']        , $xml              , 'foo@example.org'       , 'Autodiscover\ClientHandlerOutlookMacMail'  , $configPath , file_get_contents(__DIR__ . '/expected.autodiscover.xml')   ],
+        [ ['REQUEST_URI' => '/mail/config-v1.1.xml']                 , "baz@example.org" , 'baz@example.org'       , 'Autodiscover\ClientHandlerThunderbird'     , $configPath , file_get_contents(__DIR__ . '/expected.autoconfig.xml') ],
+        [ ['REQUEST_URI' => '/email.mobileconfig?email=foo@bar.com'] , 'bar@example.org' , 'bar@example.org'       , 'Autodiscover\ClientHandleriOS'             , $configPath , file_get_contents(__DIR__ . '/expected.mobileconfig.xml') ],
     ];
 }
