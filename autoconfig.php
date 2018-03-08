@@ -9,6 +9,8 @@
 
 $configPath = 'config/config.json';
 
+include("boostrap.php");
+
 if(file_exists($configPath) == false ) die("Config does not exist! RTFM. See: https://github.com/mjmunger/autodiscover-outlook-macmail");
 
 $ClientHandler = ClientFactory::getClientHandler($_SERVER);
