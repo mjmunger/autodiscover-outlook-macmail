@@ -17,7 +17,7 @@
         <outgoingServer type="smtp">
             <hostname>{{SMTPHOST}}</hostname>
             <port>{{SMTPPORT}}</port>
-            <socketType>SSL</socketType>
+            <socketType>STARTTLS</socketType>
             <authentication>password-cleartext</authentication>
             <username>%EMAILADDRESS%</username>
         </outgoingServer>
