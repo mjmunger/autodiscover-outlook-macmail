@@ -29,4 +29,4 @@ function appAutoloader($class) {
 
 spl_autoload_register('appAutoloader');
 
-include('vendor/autoload.php');
+if(file_exists('vendor/autoload.php')) include('vendor/autoload.php');
