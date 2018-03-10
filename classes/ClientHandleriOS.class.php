@@ -69,6 +69,7 @@ class ClientHandleriOS extends ClientHandlerBase
                       , "SMTPHOST" => $this->config->servers->smtp->hostname
                       , "SMTPPORT" => $this->config->servers->smtp->port
                       , "DOMAIN"   => $this->domain
+                      , "FULLNAME" => $this->getFullName()
                       ];
         return $dictionary;
     }
