@@ -49,7 +49,7 @@ class ClientHandleriOS extends ClientHandlerBase
 
         $stmt->execute([ $this->emailAddress ]);
 
-        if($stmt->errorCode() == '00000') {
+        if($stmt->errorCode() != '00000') {
           $this->log->error(sprintf("Database error: (%s) %s", $stmt->errorCode(), $stmt->errorInfo()[2]));
           return $this->emailAddress;
         }
