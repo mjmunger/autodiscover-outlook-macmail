@@ -29,23 +29,19 @@ iOS is dumb. It doesn't do any automatic lookups. Instead, you have to send link
 
  Thunderbird... just works. Simpliest and easiest of them all! Well done, Mozilla.
 
-# What's this?
+# Supported configurations
 
-This script is written for people using postfix admin, and _assumes_ you are using a single server and virtual hosts. It's useful, in this case, to have an autoconfigure script that will help your users setup their various email clients.
-
-## Supported configurations
-
-### Secure connections only.
+## Secure connections only.
 
 Additionally, non-ssl protected connections are not supported, and there are no plans to support insecure connections.
 
 If you need help with this, you can configure LetsEncrypt to generate free certs for your domain. After the certs have been renewed, use a post renewal script to update postfix and dovecot to use the new cert. SANs are useful here as well. 
 
-### IMAP only
+## IMAP only
 
 As of the initial version, only IMAP is supported. POP3 is not supported, and there are no plans to support it.
 
-### SMTP 
+## SMTP 
 
 The default configuration assumes that you are using tcp/587 submission to send _authenticated_ emails to the server. Other configurations are not currently supported.
 
@@ -89,7 +85,7 @@ These clients look for SRV records, so setup these SRV records to point it to yo
 
 ```
 _imaps._tcp             SRV 0 1 993     yourmailserver.example.org.
-_submission._tcp        SRV 0 1 465     yourmailserver.example.org.
+_submission._tcp        SRV 0 1 587     yourmailserver.example.org.
 _autodiscover._tcp      SRV 0 0 443     autodiscover.example.org.
 ```
 
