@@ -9,6 +9,7 @@
 
 namespace Autodiscover;
 
+use \PDO;
 
 class ClientHandleriOS extends ClientHandlerBase
 {
