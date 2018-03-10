@@ -72,6 +72,9 @@ class ClientHandleriOS extends ClientHandlerBase
                       , "DOMAIN"   => $this->domain
                       , "FULLNAME" => $this->getFullName()
                       ];
+        foreach($dictionary as $key => $value) {
+          $this->log->info(sprintf("%s => %s", $key, $value));
+        }
         return $dictionary;
     }
 }
