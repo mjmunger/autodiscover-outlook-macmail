@@ -11,7 +11,7 @@ namespace Autodiscover;
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
-
+use \PDO;
 
 class ClientHandlerBase
 {
