@@ -40,7 +40,7 @@ class ClientHandleriOS extends ClientHandlerBase
         $username = $this->config->database->username;
         $password = $this->config->database->password;
         try {
-          $dbh = new PDO($dsn, $username, $password, $options);
+          $dbh = new PDO($dsn, $username, $password);
         } catch (Exception $e) {
           return $this->emailAddress;
         }
