@@ -33,12 +33,14 @@ class ClientHandlerThunderbird extends ClientHandlerBase
     }
 
     public function getDictionary() {
-        $dictionary = [ "EMAIL"    => $this->emailAddress
-                      , "IMAPHOST" => $this->config->servers->imap->hostname
-                      , "IMAPPORT" => $this->config->servers->imap->port
-                      , "SMTPHOST" => $this->config->servers->smtp->hostname
-                      , "SMTPPORT" => $this->config->servers->smtp->port
-                      , "DOMAIN"   => $this->domain
+        $dictionary = [ "EMAIL"          => $this->emailAddress
+                      , "IMAPHOST"       => $this->config->servers->imap->hostname
+                      , "IMAPPORT"       => $this->config->servers->imap->port
+                      , "SMTPHOST"       => $this->config->servers->smtp->hostname
+                      , "SMTPPORT"       => $this->config->servers->smtp->port
+                      , "DOMAIN"         => $this->domain
+                      , "FULLNAME"       => $this->getFullName()
+                      , "EMAILLOCALPART" => $this->parseLocalPart()
                       ];
 
         return $dictionary;

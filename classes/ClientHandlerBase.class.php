@@ -82,6 +82,41 @@ class ClientHandlerBase
         $this->domain = end($buffer);
     }
 
+    public function parseLocalPart() {
+        $buffer = explode("@",$this->emailAddress);
+        $this->localPart = $buffer[0];
+        return $this->localPart;
+    }
+
+    public function getFullName() {
+
+        $dsn = sprintf('mysql:host=%s;dbname=%s', $this->config->database->server, $this->config->database->dbname);
+        $username = $this->config->database->username;
+        $password = $this->config->database->password;
+        try {
+          $dbh = new PDO($dsn, $username, $password);
+        } catch (Exception $e) {
+          return $this->emailAddress;
+        }
+
+        $stmt = $dbh->prepare("SELECT `name` FROM `mailbox` WHERE `username` = ?");
+
+        $stmt->execute([ $this->emailAddress ]);
+
+        if($stmt->errorCode() != '00000') {
+          $this->log->error(sprintf("Database error: (%s) %s", $stmt->errorCode(), $stmt->errorInfo()[2]));
+          return $this->emailAddress;
+        }
+
+        if($stmt->rowCount() == 0) {
+          $this->log->info(sprintf("Someone tried to do a lookup for %s, but this account doesn't exist.", $this->emailAddress));
+          return "Nobody";
+        }
+
+        $row = $stmt->fetchObject();
+        return $row->name;
+    }
+
     public function getHeaders() {
         $this->headers[] = "Cache-Control: no-cache, must-revalidate";
         $this->headers[] = "Pragma: no-cache";

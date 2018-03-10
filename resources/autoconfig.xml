@@ -3,8 +3,8 @@
     <emailProvider id="{{DOMAIN}}">
         <domain>{{DOMAIN}}</domain>
 
-        <displayName>%EMAILADDRESS%</displayName>
-        <displayShortName>%EMAILLOCALPART%</displayShortName>
+        <displayName>{{FULLNAME}}</displayName>
+        <displayShortName>{{EMAILLOCALPART}}</displayShortName>
 
         <incomingServer type="imap">
             <hostname>{{IMAPHOST}}</hostname>
