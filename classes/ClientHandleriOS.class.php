@@ -35,12 +35,12 @@ class ClientHandleriOS extends ClientHandlerBase
 
     public function getFullName() {
 
-        $dsn = sprintf('mysql:host=%s;dbname=%s', $this->config->database->server, $this->config->database->dbname;
+        $dsn = sprintf('mysql:host=%s;dbname=%s', $this->config->database->server, $this->config->database->dbname);
         $username = $this->config->database->username;
         $password = $this->config->database->password;
         try {
           $dbh = new PDO($dsn, $username, $password, $options);
-        } catch Exception $e {
+        } catch (Exception $e) {
           return $this->emailAddress;
         }
 
@@ -58,7 +58,7 @@ class ClientHandleriOS extends ClientHandlerBase
           return "Nobody";
         }
 
-        $row = $stmt->fetch
+        $row = $stmt->fetchObject();
         return $row->name;
     }
 
