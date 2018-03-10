@@ -9,6 +9,26 @@ This PHP repo is a configurable set of scripts to autoconfigure Outlook, MacMail
 1. Configure Apache mod_rewrite for virtual hosts (See copy / paste stuff below)
 1. Configure your SSL certificate SAN to include autoconfig and autodiscover. (Notes on using LetsEncrypt for this, below)
 
+## Quickstart - Outlook
+
+It should just work. Once you configure DNS as noted below, you can use the connectivity tester (see "Tests" below), and confirm you've set everything up correctly.
+
+## Mac / iOS
+
+iOS is dumb. It doesn't do any automatic lookups. Instead, you have to send links to all your people like this:
+
+ `https://example.org/email.mobileconfig?email=foo@example.org`
+
+ This auto-generates a profile configuration, which will tell iPhone / iPad / etc... to setup a mail account. These will be unsigned by default, so you have to walk your users through clicking "yes, I really want to". 
+
+ ## Android (Gmail App)
+
+ The gmail app is even dumber. It doesn't do lookups, _and_ it doesn't have profile configs. So, it's pretty well worthless for autodiscover / autoconfig.
+
+ ## Thunderbird
+
+ Thunderbird... just works. Simpliest and easiest of them all! Well done, Mozilla.
+
 # What's this?
 
 This script is written for people using postfix admin, and _assumes_ you are using a single server and virtual hosts. It's useful, in this case, to have an autoconfigure script that will help your users setup their various email clients.
