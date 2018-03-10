@@ -100,12 +100,19 @@ We need to use `mod_rewrite` to redirect requests to the script. To do that, add
 1. Select the domains from the menu (entering numbers of each one)
 1. When prompted, choose *expand* for expanding the names on your cert.
 1. When prompted, require https redirection.
+
+# Tests
+
+Testing your configs can be done with these utilities:
+
+* [Microsoft Outlook Connectivity Test](https://testconnectivity.microsoft.com/). Use the *Outlook autodiscover* test!
  
 # References
 
 * [Mozilla autoconfig documentation](https://developer.mozilla.org/en-US/docs/Mozilla/Thunderbird/Autoconfiguration)
 * [Mozilla Mission Control aka AutoConfig](https://developer.mozilla.org/en-US/docs/Archive/Misc_top_level/MCD,_Mission_Control_Desktop_AKA_AutoConfig)
 * [Implementing an Autodiscover Client in Microsoft Exchange](https://msdn.microsoft.com/en-us/library/office/ee332364(v=exchg.140).aspx#sectionSection0)
+* [Configuration profiles in Mac and iOS](https://developer.apple.com/library/content/featuredarticles/iPhoneConfigurationProfileRef/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010206-CH1-SW4)
 
 # Credits / Thanks
 Thanks to the work of these fine folks whose repos provided guidance and insight into this process:

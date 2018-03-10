@@ -28,6 +28,9 @@ class ClientFactory
             case '/email.mobileconfig':
                 return new ClientHandleriOS();
                 break;
+            case '/iOS':
+                return new ClientHandleriOS();
+                break;
             default:
                 throw new \Exception('Cannot determine the request type for this URI.');
         }
